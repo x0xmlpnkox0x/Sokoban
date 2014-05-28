@@ -46,7 +46,7 @@ public class Instruction extends AbstractScreen {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				super.touchUp(event, x, y, pointer, button);
-//				getGame().setScreen(new LevelScreen(getGame(), "Level Screen", level, number));
+				getGame().setScreen(new LevelScreen(getGame(), "Level Screen", level, number));
 //				_music.stop();
 //				OptionGame.musicbutton.setVolume(OptionGame.volume);
 //				OptionGame.musicbutton.play();
