@@ -321,7 +321,7 @@ public class TheWareHouse extends AbstractScreen {
 		secontime = TimeUtils.millis();
 
 		int temp = Math.round((secontime - startTime) / 1000);
-		if (temp == 60 / (stagetimeH + 1)) {
+		if (temp == 60 * (stagetimeH + 1)) {
 			stagetimeH++;
 		}
 		stagetime = temp - 60 * stagetimeH;
