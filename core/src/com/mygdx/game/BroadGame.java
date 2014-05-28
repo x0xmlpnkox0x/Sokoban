@@ -40,24 +40,49 @@ public class BroadGame {
 		for (int i = 1; i < mapArray.length; i++) {
 			if (mapArray[i].equals(OptionGame.STR_WALL)) {
 				broad[x][y] = OptionGame.WALL;
+				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
 				y ++;
+//				broad[x][y] = OptionGame.WALL;
+//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+//
+//				y ++;
 			}else if (mapArray[i].equals(OptionGame.STR_GOAL)) {
 				broad[x][y] = OptionGame.GOAL;
+				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+
 				y ++;
+//				broad[x][y] = OptionGame.GOAL;
+//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+//
+//				y ++;
 			}else if (mapArray[i].equals(OptionGame.STR_BOX)) {
+//				broad[x][y] = OptionGame.BOX;
+//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+//
+//				y ++;
 				broad[x][y] = OptionGame.BOX;
+				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+
 				y ++;
 			}else if (mapArray[i].equals(OptionGame.STR_PERSON)) {
 				broad[x][y] = OptionGame.PERSON;
+				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+
 				y ++;
 			}else if (mapArray[i].equals(OptionGame.STR_BOX_GOAL)) {
 				broad[x][y] = OptionGame.PLACE_BOX;
+				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+
 				y ++;
 			}else if (mapArray[i].equals(OptionGame.STR_PERSON_GOAL)) {
 				broad[x][y] = OptionGame.PERSON_ON_GOAL;
+				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+
 				y ++;
-			}else if (mapArray[i].equals(OptionGame.FLOOR)) {
+			}else if (mapArray[i].equals(OptionGame.STR_FLOOR)) {
 				broad[x][y] = OptionGame.FLOOR;
+				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+
 				y ++;
 			}else if (mapArray[i].equals(OptionGame.STR_BREAK_LINE)) {
 				
@@ -70,40 +95,57 @@ public class BroadGame {
 //			switch (mapArray[i]) {
 //			case OptionGame.STR_WALL:
 //				broad[x][y] = OptionGame.WALL;
+//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+//
 //				y ++;
 //				break;
 //
 //			case OptionGame.STR_GOAL:
 //				broad[x][y] = OptionGame.GOAL;
+//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+//
 //				y ++;
 //				break;
 //				
 //			case OptionGame.STR_BOX:
+//
 //				broad[x][y] = OptionGame.BOX;
+//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+//
 //				y ++;
 //				break;
 //			
 //			case OptionGame.STR_PERSON:
+//				
 //				broad[x][y] = OptionGame.PERSON;
+//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+//
 //				y ++;
 //				break;
 //				
 //			case OptionGame.STR_BOX_GOAL:
 //				broad[x][y] = OptionGame.PLACE_BOX;
+//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+//
 //				y ++;
 //				break;
 //				
 //			case OptionGame.STR_PERSON_GOAL:
 //				broad[x][y] = OptionGame.PERSON_ON_GOAL;
+//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+//
 //				y ++;
 //				break;
 //				
 //			case OptionGame.STR_FLOOR:
 //				broad[x][y] = OptionGame.FLOOR;
+//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
+//
 //				y ++;
 //				break;
 //				
 //			case OptionGame.STR_BREAK_LINE:
+//				
 //				x ++;
 //				y = getPosBroadY();
 //				break;
