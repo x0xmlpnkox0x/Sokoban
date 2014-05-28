@@ -120,9 +120,9 @@ public class LevelScreen extends AbstractScreen {
 							Assets.music_click_btn.play();
 							Assets.music_click_btn.setVolume(OptionGame.volume);
 							int gameLevel = btnLevel.getLevelNumber() - 1;
-							// getGame().setScreen(new TheWareHouse(getGame(),
-							// "GAME PLAYING",
-							// level, gameLevel));
+							 getGame().setScreen(new TheWareHouse(getGame(),
+							 "GAME PLAYING",
+							 level, gameLevel));
 						}
 
 						@Override
