@@ -26,7 +26,7 @@ import com.mygdx.game.Level;
 import com.mygdx.game.Person;
 
 public class TheWareHouse extends AbstractScreen {
-
+	String test = "";
 	private BroadGame broad;
 	private Level level;
 	private int currentLevel;
@@ -71,6 +71,7 @@ public class TheWareHouse extends AbstractScreen {
 	private ButtonGame btnRefresh;
 	private ButtonGame btnvolume;
 	private ButtonGame lbtime;
+	private ButtonGame btnSolution;
 	private Image imgtime;
 
 	private Music m_run = Gdx.audio.newMusic(Gdx.files
@@ -82,6 +83,8 @@ public class TheWareHouse extends AbstractScreen {
 
 	private Stack stack = new Stack();
 	private boolean touchUndo = false;
+
+	private String solution = "uldrrruldlluurdldrddluruurrdluldd";
 
 	public TheWareHouse(Game game, String screenName, Level level, int number) {
 		super(game, screenName);
@@ -120,7 +123,7 @@ public class TheWareHouse extends AbstractScreen {
 		btnUndo = MenuCreator.createCustomGameButton(Assets.btnMoveLeft,
 				Assets.btnMoveLeft);
 		btnUndo.setSize(35, 35);
-		btnUndo.setPosition(OptionGame.SCREEN_WIDTH - 220,
+		btnUndo.setPosition(OptionGame.SCREEN_WIDTH - 230,
 				OptionGame.SCREEN_HEIGHT - 38);
 		btnUndo.addListener(new ActorGestureListener() {
 
@@ -270,14 +273,14 @@ public class TheWareHouse extends AbstractScreen {
 		btnRedo = MenuCreator.createCustomGameButton(Assets.btnMoveRight,
 				Assets.btnMoveRight);
 		btnRedo.setSize(35, 35);
-		btnRedo.setPosition(OptionGame.SCREEN_WIDTH - 170,
+		btnRedo.setPosition(OptionGame.SCREEN_WIDTH - 185,
 				OptionGame.SCREEN_HEIGHT - 38);
 		getStage().addActor(btnRedo);
 
 		btnRefresh = MenuCreator.createCustomGameButton(Assets.btnRefrect,
 				Assets.btnRefrect);
 		btnRefresh.setSize(35, 40);
-		btnRefresh.setPosition(OptionGame.SCREEN_WIDTH - 110,
+		btnRefresh.setPosition(OptionGame.SCREEN_WIDTH - 135,
 				OptionGame.SCREEN_HEIGHT - 36);
 		getStage().addActor(btnRefresh);
 		btnRefresh.addListener(new ActorGestureListener() {
@@ -292,9 +295,24 @@ public class TheWareHouse extends AbstractScreen {
 			}
 		});
 
+		btnSolution = new MenuCreator().createCustomGameButton(
+				Assets.imgSolution, Assets.imgSolution);
+		btnSolution.setPosition(OptionGame.SCREEN_WIDTH - 90,
+				OptionGame.SCREEN_HEIGHT - 36);
+		getStage().addActor(btnSolution);
+		btnSolution.addListener(new ActorGestureListener() {
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub
+				super.touchUp(event, x, y, pointer, button);
+
+			}
+		});
+
 		btnvolume = new MenuCreator().createCustomGameButton(Assets.btnvolume,
 				Assets.btnvolume);
-		btnvolume.setPosition(OptionGame.SCREEN_WIDTH - 50,
+		btnvolume.setPosition(OptionGame.SCREEN_WIDTH - 40,
 				OptionGame.SCREEN_HEIGHT - 36);
 		getStage().addActor(btnvolume);
 		btnvolume.addListener(new ActorGestureListener() {
@@ -308,12 +326,18 @@ public class TheWareHouse extends AbstractScreen {
 				} else {
 					OptionGame.volume = 1f;
 				}
+				Assets.music_click_btn.play();
+				Assets.music_click_btn.setVolume(OptionGame.volume);
 			}
 		});
 		// Create broad control game
 		broad = new BroadGame();
 		broad.setBroad(level.getMap(currentLevel),
 				level.getWidth(currentLevel), level.getHeight(currentLevel));
+	}
+
+	private void startSolution() {
+
 	}
 
 	private void setTimeStage() {
@@ -738,12 +762,13 @@ public class TheWareHouse extends AbstractScreen {
 		if (broad.checkComplete()) {
 			actionComplete = false;
 			Winner.play();
+			Gdx.app.log("solution", "" + test);
 			if (!completeCheck) {
 				firstTime = System.nanoTime() / 1000;
 				completeCheck = true;
-				Gdx.app.log("COMPLETE", "" + firstTime);
+
 			}
-			Gdx.app.log("COMPLETE", "" + firstTime);
+
 			if (secondTime - firstTime > 1000000) {
 				getGame().setScreen(
 						new LevelScreen(getGame(), "MENU SCREEN", level,
@@ -782,6 +807,8 @@ public class TheWareHouse extends AbstractScreen {
 			m_run.play();
 			stack.push(OptionGame.BOTTOM);
 		}
+		Gdx.app.log("move", "D");
+		test += "d";
 	}
 
 	private void moveTop() {
@@ -813,6 +840,8 @@ public class TheWareHouse extends AbstractScreen {
 			m_run.play();
 			stack.push(OptionGame.TOP);
 		}
+		Gdx.app.log("move", "U");
+		test += "u";
 	}
 
 	private void moveLeft() {
@@ -844,6 +873,8 @@ public class TheWareHouse extends AbstractScreen {
 			m_run.play();
 			stack.push(OptionGame.LEFT);
 		}
+		Gdx.app.log("move", "L");
+		test += "l";
 	}
 
 	private void moveRight() {
@@ -875,5 +906,7 @@ public class TheWareHouse extends AbstractScreen {
 			m_run.play();
 			stack.push(OptionGame.RIGHT);
 		}
+		Gdx.app.log("move", "R");
+		test += "r";
 	}
 }

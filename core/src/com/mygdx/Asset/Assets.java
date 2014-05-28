@@ -37,12 +37,12 @@ public class Assets {
 	public static TextureRegion imgLevel;
 	public static TextureRegion imgLbLevel;
 	public static TextureRegion imgloading;
-	
+
 	public static Texture imgtime;
 	public static TextureRegion imglbtime;
 
 	public static TextureRegion imgBHD;
-
+	public static TextureRegion imgSolution;
 	public static TextureRegion btnMoveLeft;
 	public static TextureRegion btnMoveRight;
 
@@ -142,6 +142,7 @@ public class Assets {
 		imgWallBottomRight = new TextureRegion(new Texture(
 				"wall/wall_down_right.png"));
 		imgtime = new Texture("data/time.png");
+		imgSolution = new TextureRegion(new Texture("data/solution.png"));
 		imglbtime = new TextureRegion(new Texture("data/lbtime.png"));
 	}
 
