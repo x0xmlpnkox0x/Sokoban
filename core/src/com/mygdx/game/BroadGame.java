@@ -37,7 +37,7 @@ public class BroadGame {
 		map = map.replace("\n", "n");
 		Gdx.app.log("map", "" + map);
 		String[] mapArray = map.split("");
-		for (int i = 0; i < mapArray.length; i++) {
+		for (int i = 1; i < mapArray.length; i++) {
 			if (mapArray[i].equals(OptionGame.STR_WALL)) {
 				broad[x][y] = OptionGame.WALL;
 				y ++;
