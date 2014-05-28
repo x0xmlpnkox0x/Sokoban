@@ -125,10 +125,14 @@ public class Assets {
 		// item game
 		imgFloor = getAtlas().findRegion("floor");
 		imgLocation = getAtlas().findRegion("location");
-		imgWallTopLeft = getAtlas().findRegion("wallTopLeft");
-		imgWallTopRight = getAtlas().findRegion("wallTopRight");
-		imgWallBottomLeft = getAtlas().findRegion("wallBottomLeft");
-		imgWallBottomRight = getAtlas().findRegion("wallBottomRight");
+//		imgWallTopLeft = getAtlas().findRegion("wallTopLeft");
+		imgWallTopLeft = new TextureRegion(new Texture("wall/wall_top_left.png"));
+//		imgWallTopRight = getAtlas().findRegion("wallTopRight");
+		imgWallTopRight = new TextureRegion(new Texture("wall/wall_top_right.png"));
+//		imgWallBottomLeft = getAtlas().findRegion("wallBottomLeft");
+		imgWallBottomLeft = new TextureRegion(new Texture("wall/wall_down_left.png"));
+//		imgWallBottomRight = getAtlas().findRegion("wallBottomRight");
+		imgWallBottomRight = new TextureRegion(new Texture("wall/wall_down_right.png"));
 	}
 
 	public static void loadButtons() {
