@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mygdx.Abstract.AnimationCreator;
+
 //import com.mygdx.Abstract.AnimationCreator;
 
 public class Assets {
@@ -36,6 +37,7 @@ public class Assets {
 	public static TextureRegion imgLevel;
 	public static TextureRegion imgLbLevel;
 	public static TextureRegion imgloading;
+	public static Texture imgtime;
 
 	public static TextureRegion imgBHD;
 
@@ -103,7 +105,7 @@ public class Assets {
 		loadImages();
 		loadButtons();
 		loadFonts();
-		 loadAnimation();
+		loadAnimation();
 	}
 
 	private static void relaseResources() {
@@ -125,14 +127,19 @@ public class Assets {
 		// item game
 		imgFloor = getAtlas().findRegion("floor");
 		imgLocation = getAtlas().findRegion("location");
-//		imgWallTopLeft = getAtlas().findRegion("wallTopLeft");
-		imgWallTopLeft = new TextureRegion(new Texture("wall/wall_top_left.png"));
-//		imgWallTopRight = getAtlas().findRegion("wallTopRight");
-		imgWallTopRight = new TextureRegion(new Texture("wall/wall_top_right.png"));
-//		imgWallBottomLeft = getAtlas().findRegion("wallBottomLeft");
-		imgWallBottomLeft = new TextureRegion(new Texture("wall/wall_down_left.png"));
-//		imgWallBottomRight = getAtlas().findRegion("wallBottomRight");
-		imgWallBottomRight = new TextureRegion(new Texture("wall/wall_down_right.png"));
+		// imgWallTopLeft = getAtlas().findRegion("wallTopLeft");
+		imgWallTopLeft = new TextureRegion(
+				new Texture("wall/wall_top_left.png"));
+		// imgWallTopRight = getAtlas().findRegion("wallTopRight");
+		imgWallTopRight = new TextureRegion(new Texture(
+				"wall/wall_top_right.png"));
+		// imgWallBottomLeft = getAtlas().findRegion("wallBottomLeft");
+		imgWallBottomLeft = new TextureRegion(new Texture(
+				"wall/wall_down_left.png"));
+		// imgWallBottomRight = getAtlas().findRegion("wallBottomRight");
+		imgWallBottomRight = new TextureRegion(new Texture(
+				"wall/wall_down_right.png"));
+		imgtime = new Texture("data/time.png");
 	}
 
 	public static void loadButtons() {
@@ -162,7 +169,7 @@ public class Assets {
 
 	public static void loadAnimation() {
 		// Animation
-		
+
 		AnimPersonTop = AnimationCreator.getAnimationFromSingleTexture(
 				getAtlas(), "personTop", 1, 0);
 		AnimPersonBottom = AnimationCreator.getAnimationFromSingleTexture(
@@ -197,4 +204,3 @@ public class Assets {
 				getAtlas(), "arrow", 2, 0.25f);
 	}
 }
-
