@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.mygdx.Abstract.AbstractScreen;
 import com.mygdx.Abstract.ButtonGame;
 import com.mygdx.Abstract.MenuCreator;
-import com.mygdx.Aseet.Assets;
+import com.mygdx.Asset.Assets;
 import com.mygdx.Option.OptionGame;
 import com.mygdx.game.Level;
 
@@ -77,7 +77,7 @@ public class MenuGame extends AbstractScreen {
 				super.touchUp(event, x, y, pointer, button);
 				Assets.music_click_btn.play();
 				Assets.music_click_btn.setVolume(OptionGame.volume);
-//				getGame().setScreen(new Instruction(getGame(), "Instruction", level, currenLevel));
+				getGame().setScreen(new Instruction(getGame(), "Instruction", level, currenLevel));
 			}
 		});
 		getStage().addActor(buttonMenu);
