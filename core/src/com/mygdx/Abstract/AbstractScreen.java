@@ -27,7 +27,7 @@ public abstract class AbstractScreen implements Screen {
 	private String screenName = "Untitled Screen";
 	private final Stage stage;
 
-	private boolean isBackButtonActive = false;
+	private boolean isBackButtonActive = true;
 
 	public AbstractScreen(Game game, String screenName) {
 		super();
