@@ -42,24 +42,15 @@ public class BroadGame {
 				broad[x][y] = OptionGame.WALL;
 				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
 				y ++;
-//				broad[x][y] = OptionGame.WALL;
-//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
-//
-//				y ++;
+
 			}else if (mapArray[i].equals(OptionGame.STR_GOAL)) {
 				broad[x][y] = OptionGame.GOAL;
 				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
 
 				y ++;
-//				broad[x][y] = OptionGame.GOAL;
-//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
-//
-//				y ++;
+
 			}else if (mapArray[i].equals(OptionGame.STR_BOX)) {
-//				broad[x][y] = OptionGame.BOX;
-//				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
-//
-//				y ++;
+
 				broad[x][y] = OptionGame.BOX;
 				Gdx.app.log("broad"+x+"."+y, ""+broad[x][y]);
 
