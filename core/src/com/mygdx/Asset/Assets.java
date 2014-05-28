@@ -37,7 +37,9 @@ public class Assets {
 	public static TextureRegion imgLevel;
 	public static TextureRegion imgLbLevel;
 	public static TextureRegion imgloading;
+	
 	public static Texture imgtime;
+	public static TextureRegion imglbtime;
 
 	public static TextureRegion imgBHD;
 
@@ -140,6 +142,7 @@ public class Assets {
 		imgWallBottomRight = new TextureRegion(new Texture(
 				"wall/wall_down_right.png"));
 		imgtime = new Texture("data/time.png");
+		imglbtime = new TextureRegion(new Texture("data/lbtime.png"));
 	}
 
 	public static void loadButtons() {

@@ -16,6 +16,7 @@ public class screenLoading extends AbstractScreen {
 
 	private long starttime;
 
+
 	public screenLoading(Game game, String screenName) {
 		super(game, screenName);
 		// TODO Auto-generated constructor stub

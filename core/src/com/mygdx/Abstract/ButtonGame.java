@@ -57,6 +57,9 @@ public class ButtonGame extends AbstractButton {
 		else if (text.length()==2) {
 			bitMapFont.draw(batch, text, getX() + 15, getY() + 30);
 		}
+		else if (text.length() == 5) {
+			bitMapFont.draw(batch, text, getX() + 15, getY() + 30);
+		}
 		else {
 			bitMapFont.draw(batch, text, getX() + 10, getY() + 3);
 		}

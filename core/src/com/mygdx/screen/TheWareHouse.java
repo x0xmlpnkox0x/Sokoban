@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.Abstract.AbstractScreen;
@@ -53,6 +54,13 @@ public class TheWareHouse extends AbstractScreen {
 	private boolean MOVE_DOWN = false;
 	private int count = 0;
 
+	private long startTime;
+	private long secontime;
+	private int stagetime = 0;
+	private int stagetimeH = 0;
+
+	String setTextTime = "";
+
 	private float firstTime;
 	private float secondTime;
 
@@ -62,6 +70,7 @@ public class TheWareHouse extends AbstractScreen {
 	private ButtonGame btnRedo;
 	private ButtonGame btnRefresh;
 	private ButtonGame btnvolume;
+	private ButtonGame lbtime;
 	private Image imgtime;
 
 	private Music m_run = Gdx.audio.newMusic(Gdx.files
@@ -84,21 +93,29 @@ public class TheWareHouse extends AbstractScreen {
 	}
 
 	private void initial() {
+		startTime = TimeUtils.millis();
+
 		imglevel = new Image(Assets.imgLevel);
 		imglevel.setPosition(20, 342);
 		getStage().addActor(imglevel);
-		
+
 		imgtime = new Image(Assets.imgtime);
 		imgtime.setPosition(190, 350);
-		
+
 		getStage().addActor(imgtime);
-		
+
 		levelButton = MenuCreator.createCustomGameButton(Assets.imgLbLevel,
 				Assets.imgLbLevel);
 		int setText = currentLevel + 1;
 		levelButton.setText(Assets.font5, "" + setText, true);
 		levelButton.setPosition(115, 350);
 		getStage().addActor(levelButton);
+
+		lbtime = MenuCreator.createCustomGameButton(Assets.imglbtime,
+				Assets.imglbtime);
+
+		lbtime.setPosition(270, 350);
+		getStage().addActor(lbtime);
 
 		btnUndo = MenuCreator.createCustomGameButton(Assets.btnMoveLeft,
 				Assets.btnMoveLeft);
@@ -297,6 +314,26 @@ public class TheWareHouse extends AbstractScreen {
 		broad = new BroadGame();
 		broad.setBroad(level.getMap(currentLevel),
 				level.getWidth(currentLevel), level.getHeight(currentLevel));
+	}
+
+	private void setTimeStage() {
+		// TODO Auto-generated method stub
+		secontime = TimeUtils.millis();
+
+		int temp = Math.round((secontime - startTime) / 1000);
+		if (temp == 60 / (stagetimeH + 1)) {
+			stagetimeH++;
+		}
+		stagetime = temp - 60 * stagetimeH;
+
+		if (stagetime < 10 & stagetimeH < 10) {
+			setTextTime = "0" + stagetimeH + ":0" + stagetime;
+		} else if (stagetimeH < 10 & stagetime > 9) {
+			setTextTime = "0" + stagetimeH + ":" + stagetime;
+		} else if (stagetime > 9 & stagetimeH > 9) {
+			setTextTime = stagetimeH + ":" + stagetime;
+		}
+
 	}
 
 	private void reset() {
@@ -529,7 +566,8 @@ public class TheWareHouse extends AbstractScreen {
 		m_run.setVolume(OptionGame.volume);
 		m_runbox.setVolume(OptionGame.volume);
 		Winner.setVolume(OptionGame.volume);
-
+		setTimeStage();
+		lbtime.setText(Assets.font5, "" + setTextTime, true);
 		if (activeClicked) {
 			if (stack.size() != 0) {
 				btnUndo.setLockActive(false);
@@ -706,7 +744,7 @@ public class TheWareHouse extends AbstractScreen {
 				Gdx.app.log("COMPLETE", "" + firstTime);
 			}
 			Gdx.app.log("COMPLETE", "" + firstTime);
-			if (secondTime - firstTime > 3000000) {
+			if (secondTime - firstTime > 1000000) {
 				getGame().setScreen(
 						new LevelScreen(getGame(), "MENU SCREEN", level,
 								currentLevel + 1));
