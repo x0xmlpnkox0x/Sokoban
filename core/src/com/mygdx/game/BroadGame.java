@@ -33,10 +33,11 @@ public class BroadGame {
 		}
 		int x = getPosBroadX();
 		int y = getPosBroadY();
-//		Gdx.app.log("ScreenLog", "\n" + map);
+		
 		map = map.replace("\n", "n");
+		Gdx.app.log("map", "" + map);
 		String[] mapArray = map.split("");
-		for (int i = 1; i < mapArray.length; i++) {
+		for (int i = 0; i < mapArray.length; i++) {
 			if (mapArray[i].equals(OptionGame.STR_WALL)) {
 				broad[x][y] = OptionGame.WALL;
 				y ++;
@@ -59,6 +60,7 @@ public class BroadGame {
 				broad[x][y] = OptionGame.FLOOR;
 				y ++;
 			}else if (mapArray[i].equals(OptionGame.STR_BREAK_LINE)) {
+				
 				x ++;
 				y = getPosBroadY();
 			}else {
