@@ -61,6 +61,8 @@ public class BroadGame {
 			}else if (mapArray[i].equals(OptionGame.STR_BREAK_LINE)) {
 				x ++;
 				y = getPosBroadY();
+			}else {
+				y++;
 			}
 			
 //			switch (mapArray[i]) {
