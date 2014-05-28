@@ -69,7 +69,8 @@ public class LevelScreen extends AbstractScreen {
 	}
 
 	private void setTableLevelScreen() {
-
+		//set backbutton
+		setBackButtonActive(true);
 		// Thiết lập số màn hình có thể hiển thị
 		if (OptionGame.NUMBER_LEVEL % 20 == 0) {
 			setScreenDisplay(OptionGame.NUMBER_LEVEL
@@ -119,8 +120,9 @@ public class LevelScreen extends AbstractScreen {
 							Assets.music_click_btn.play();
 							Assets.music_click_btn.setVolume(OptionGame.volume);
 							int gameLevel = btnLevel.getLevelNumber() - 1;
-//							getGame().setScreen(new TheWareHouse(getGame(), "GAME PLAYING",
-//											level, gameLevel));
+							// getGame().setScreen(new TheWareHouse(getGame(),
+							// "GAME PLAYING",
+							// level, gameLevel));
 						}
 
 						@Override
@@ -215,7 +217,7 @@ public class LevelScreen extends AbstractScreen {
 	public void keyBackPressed() {
 		super.keyBackPressed();
 		getGame().setScreen(
-				new MenuGame(getGame(), "MAIN GAME", getCurrentLevel()));
+				new Instruction(getGame(), "MAIN GAME", level,currentLevel));
 	}
 
 	private void setTableDisplay(int now) {
