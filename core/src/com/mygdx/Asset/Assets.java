@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.mygdx.Abstract.AnimationCreator;
 //import com.mygdx.Abstract.AnimationCreator;
 
 public class Assets {
@@ -158,38 +159,38 @@ public class Assets {
 	public static void loadAnimation() {
 		// Animation
 		
-//		AnimPersonTop = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personTop", 1, 0);
-//		AnimPersonBottom = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personBottom", 1, 0);
-//		AnimPersonLeft = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personLeft", 1, 0);
-//		AnimPersonRight = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personRight", 1, 0);
-//
-//		//
-//		AnimPersonRunBottom = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personRunBottom", 2, 0.25f);
-//		AnimPersonRunTop = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personRunTop", 2, 0.25f);
-//		AnimPersonRunLeft = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personRunLeft", 2, 0.25f);
-//		AnimPersonRunRight = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personRunRight", 2, 0.25f);
-//
-//		//
-//		AnimPersonPushBottom = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personPushBottom", 2, 0.25f);
-//		AnimPersonPushTop = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personPushTop", 2, 0.25f);
-//		AnimPersonPushLeft = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personPushLeft", 2, 0.25f);
-//		AnimPersonPushRight = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "personPushRight", 2, 0.25f);
-//
-//		//
-//		AnimArrowGoal = AnimationCreator.getAnimationFromSingleTexture(
-//				getAtlas(), "arrow", 2, 0.25f);
+		AnimPersonTop = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personTop", 1, 0);
+		AnimPersonBottom = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personBottom", 1, 0);
+		AnimPersonLeft = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personLeft", 1, 0);
+		AnimPersonRight = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personRight", 1, 0);
+
+		//
+		AnimPersonRunBottom = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personRunBottom", 2, 0.25f);
+		AnimPersonRunTop = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personRunTop", 2, 0.25f);
+		AnimPersonRunLeft = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personRunLeft", 2, 0.25f);
+		AnimPersonRunRight = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personRunRight", 2, 0.25f);
+
+		//
+		AnimPersonPushBottom = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personPushBottom", 2, 0.25f);
+		AnimPersonPushTop = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personPushTop", 2, 0.25f);
+		AnimPersonPushLeft = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personPushLeft", 2, 0.25f);
+		AnimPersonPushRight = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "personPushRight", 2, 0.25f);
+
+		//
+		AnimArrowGoal = AnimationCreator.getAnimationFromSingleTexture(
+				getAtlas(), "arrow", 2, 0.25f);
 	}
 }
 
