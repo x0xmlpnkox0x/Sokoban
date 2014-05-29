@@ -308,6 +308,7 @@ public class TheWareHouse extends AbstractScreen {
 				Assets.imgSolution, Assets.imgSolution);
 		btnSolution.setPosition(OptionGame.SCREEN_WIDTH - 90,
 				OptionGame.SCREEN_HEIGHT - 36);
+		btnSolution.setSize(36, 36);
 		getStage().addActor(btnSolution);
 		btnSolution.addListener(new ActorGestureListener() {
 			@Override

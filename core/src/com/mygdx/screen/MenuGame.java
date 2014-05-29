@@ -26,7 +26,7 @@ public class MenuGame extends AbstractScreen {
 	private ButtonGame buttonMenu; 
 	
 	public Level level;
-	private int currenLevel= 99;
+	private int currenLevel= 10;
 	private SolutionGame solutionGame;
 	
 	public MenuGame(Game game, String screenName, SolutionGame solutionGame) {
