@@ -16,6 +16,7 @@ import com.mygdx.Abstract.MenuCreator;
 import com.mygdx.Asset.Assets;
 import com.mygdx.Option.OptionGame;
 import com.mygdx.game.Level;
+import com.mygdx.game.SolutionGame;
 
 public class LevelScreen extends AbstractScreen {
 
@@ -39,11 +40,16 @@ public class LevelScreen extends AbstractScreen {
 	private boolean clickNextTable;
 	private boolean clickPressTable;
 
-	public LevelScreen(Game game, String screenName, Level level, int currentLv) {
+	private SolutionGame solutionGame;
+
+	public LevelScreen(Game game, String screenName, Level level,
+			int currentLv, SolutionGame solutionGame) {
 		super(game, screenName);
 		this.currentLevel = currentLv;
 		this.ScreenDisplayNow = (int) (currentLv / 20);
 		this.level = level;
+		this.solutionGame = solutionGame;
+
 		setUpScreenCustomer();
 	}
 
@@ -69,7 +75,7 @@ public class LevelScreen extends AbstractScreen {
 	}
 
 	private void setTableLevelScreen() {
-		//set backbutton
+		// set backbutton
 		setBackButtonActive(true);
 		// Thiết lập số màn hình có thể hiển thị
 		if (OptionGame.NUMBER_LEVEL % 20 == 0) {
@@ -120,9 +126,9 @@ public class LevelScreen extends AbstractScreen {
 							Assets.music_click_btn.play();
 							Assets.music_click_btn.setVolume(OptionGame.volume);
 							int gameLevel = btnLevel.getLevelNumber() - 1;
-							 getGame().setScreen(new TheWareHouse(getGame(),
-							 "GAME PLAYING",
-							 level, gameLevel));
+							getGame().setScreen(
+									new TheWareHouse(getGame(), "GAME PLAYING",
+											level, gameLevel, solutionGame));
 						}
 
 						@Override
@@ -217,7 +223,7 @@ public class LevelScreen extends AbstractScreen {
 	public void keyBackPressed() {
 		super.keyBackPressed();
 		getGame().setScreen(
-				new Instruction(getGame(), "MAIN GAME", level,currentLevel));
+				new Instruction(getGame(), "MAIN GAME", level, currentLevel, solutionGame));
 	}
 
 	private void setTableDisplay(int now) {

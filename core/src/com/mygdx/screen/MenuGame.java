@@ -13,6 +13,7 @@ import com.mygdx.Abstract.MenuCreator;
 import com.mygdx.Asset.Assets;
 import com.mygdx.Option.OptionGame;
 import com.mygdx.game.Level;
+import com.mygdx.game.SolutionGame;
 
 
 public class MenuGame extends AbstractScreen {
@@ -25,11 +26,12 @@ public class MenuGame extends AbstractScreen {
 	private ButtonGame buttonMenu; 
 	
 	public Level level;
-	private int currenLevel;
+	private int currenLevel= 99;
+	private SolutionGame solutionGame;
 	
-	public MenuGame(Game game, String screenName, int currentLevel) {
+	public MenuGame(Game game, String screenName, SolutionGame solutionGame) {
 		super(game, screenName);
-		this.currenLevel = currentLevel;
+		this.solutionGame = solutionGame;
 		initial();
 		setUpGameElements();
 		setUpButtons();
@@ -77,7 +79,7 @@ public class MenuGame extends AbstractScreen {
 				super.touchUp(event, x, y, pointer, button);
 				Assets.music_click_btn.play();
 				Assets.music_click_btn.setVolume(OptionGame.volume);
-				getGame().setScreen(new Instruction(getGame(), "Instruction", level, currenLevel));
+				getGame().setScreen(new Instruction(getGame(), "Instruction", level, currenLevel, solutionGame));
 			}
 		});
 		getStage().addActor(buttonMenu);

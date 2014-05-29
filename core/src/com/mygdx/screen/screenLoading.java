@@ -9,17 +9,21 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.mygdx.Abstract.AbstractScreen;
+import com.mygdx.game.SolutionGame;
 
 
 public class screenLoading extends AbstractScreen {
 	private Image imgloading;
 
 	private long starttime;
-
+private SolutionGame solutionGame;
 
 	public screenLoading(Game game, String screenName) {
 		super(game, screenName);
 		// TODO Auto-generated constructor stub
+		
+		solutionGame = new SolutionGame();
+		solutionGame.setSolution();
 		starttime = TimeUtils.millis();
 		setBackgroundTexture(new TextureRegion(new Texture("data/loading.png")));
 		initial();
@@ -36,7 +40,7 @@ public class screenLoading extends AbstractScreen {
 		super.render(delta);
 		if (TimeUtils.millis()>(starttime+1000)){
 			Gdx.app.log("fdsfdsf", "FDfdsf");
-			   getGame().setScreen(new MenuGame(getGame(), "Menu Game", 0));
+			   getGame().setScreen(new MenuGame(getGame(), "Menu Game", solutionGame));
 		   }
 	}
 

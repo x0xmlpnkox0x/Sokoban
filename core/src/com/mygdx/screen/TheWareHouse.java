@@ -2,6 +2,7 @@ package com.mygdx.screen;
 
 import java.util.ArrayList;
 import java.util.Stack;
+import java.util.concurrent.TimeUnit;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -24,6 +25,7 @@ import com.mygdx.game.BroadGame;
 import com.mygdx.game.Goal;
 import com.mygdx.game.Level;
 import com.mygdx.game.Person;
+import com.mygdx.game.SolutionGame;
 
 public class TheWareHouse extends AbstractScreen {
 	String test = "";
@@ -84,15 +86,21 @@ public class TheWareHouse extends AbstractScreen {
 	private Stack stack = new Stack();
 	private boolean touchUndo = false;
 
-	private String solution = "uldrrruldlluurdldrddluruurrdluldd";
+	private String solution = "";
+	private SolutionGame solutionGame;
 
-	public TheWareHouse(Game game, String screenName, Level level, int number) {
+	public TheWareHouse(Game game, String screenName, Level level, int number,
+			SolutionGame solution_game) {
 		super(game, screenName);
 		this.level = level;
 		this.currentLevel = number;
+		solutionGame = solution_game;
+
+		solution = solutionGame.getSolution(number);
 		initial();
 		setUpGameElements();
 		setUpButtons();
+		Gdx.app.log("Solution", "" + solution);
 	}
 
 	private void initial() {
@@ -166,6 +174,7 @@ public class TheWareHouse extends AbstractScreen {
 								box.getPosX() * 40, 0.5f);
 						person.actionMoveTo(person.getPosY() * 40,
 								person.getPosX() * 40, 0.5f);
+
 						BottomPress = true;
 						m_runbox.play();
 						break;
@@ -291,7 +300,7 @@ public class TheWareHouse extends AbstractScreen {
 				super.touchUp(event, x, y, pointer, button);
 				getGame().setScreen(
 						new TheWareHouse(getGame(), "The WareHouse", level,
-								currentLevel));
+								currentLevel, solutionGame));
 			}
 		});
 
@@ -306,7 +315,8 @@ public class TheWareHouse extends AbstractScreen {
 					int pointer, int button) {
 				// TODO Auto-generated method stub
 				super.touchUp(event, x, y, pointer, button);
-
+				activeSolution = true;
+				i++;
 			}
 		});
 
@@ -334,10 +344,6 @@ public class TheWareHouse extends AbstractScreen {
 		broad = new BroadGame();
 		broad.setBroad(level.getMap(currentLevel),
 				level.getWidth(currentLevel), level.getHeight(currentLevel));
-	}
-
-	private void startSolution() {
-
 	}
 
 	private void setTimeStage() {
@@ -579,10 +585,13 @@ public class TheWareHouse extends AbstractScreen {
 		getGame()
 				.setScreen(
 						new LevelScreen(getGame(), "LEVEL SCREEN", level,
-								currentLevel));
+								currentLevel, solutionGame));
 	}
 
 	private boolean activeClicked;
+	private boolean activeSolution = false;
+	private int i = -1;
+	private long time = 0;
 
 	@Override
 	public synchronized void render(float delta) {
@@ -592,6 +601,73 @@ public class TheWareHouse extends AbstractScreen {
 		Winner.setVolume(OptionGame.volume);
 		setTimeStage();
 		lbtime.setText(Assets.font5, "" + setTextTime, true);
+		if (time != 0) {
+			if (i < solution.length() - 1) {
+
+				if (TimeUtils.millis() > time + 1000) {
+					activeSolution = true;
+					i++;
+				}
+			}
+		}
+		if (activeSolution) {
+			// for (int i = 0; i < solution.length(); i++) {
+			if (solution != null) {
+
+				if (solution.charAt(i) == 'u') {
+
+					time = TimeUtils.millis();
+
+					moveTop();
+					MOVE_TOP = false;
+					actionComplete = false;
+					activeTouch = false;
+					btnUndo.setLockActive(true);
+					activeClicked = false;
+					activeSolution = false;
+
+				} else if (solution.charAt(i) == 'd') {
+
+					time = TimeUtils.millis();
+
+					moveDown();
+					MOVE_DOWN = false;
+					actionComplete = false;
+					activeTouch = false;
+					btnUndo.setLockActive(true);
+					activeClicked = false;
+					activeSolution = false;
+
+				} else if (solution.charAt(i) == 'l') {
+					time = TimeUtils.millis();
+
+					moveLeft();
+					MOVE_LEFT = false;
+					actionComplete = false;
+					activeTouch = false;
+					btnUndo.setLockActive(true);
+					activeClicked = false;
+					activeSolution = false;
+
+				} else if (solution.charAt(i) == 'r') {
+					time = TimeUtils.millis();
+
+					moveRight();
+					MOVE_RIGHT = false;
+					actionComplete = false;
+					activeTouch = false;
+					btnUndo.setLockActive(true);
+					activeClicked = false;
+					activeSolution = false;
+
+				}
+				// if (i == solution.length()-1) {
+				// activeSolution = false;
+				// }
+				// }
+			}
+		}
+
 		if (activeClicked) {
 			if (stack.size() != 0) {
 				btnUndo.setLockActive(false);
@@ -772,7 +848,7 @@ public class TheWareHouse extends AbstractScreen {
 			if (secondTime - firstTime > 1000000) {
 				getGame().setScreen(
 						new LevelScreen(getGame(), "MENU SCREEN", level,
-								currentLevel + 1));
+								currentLevel + 1, solutionGame));
 			}
 		}
 	}

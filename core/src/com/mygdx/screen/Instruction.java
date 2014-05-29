@@ -10,6 +10,7 @@ import com.mygdx.Abstract.MenuCreator;
 import com.mygdx.Asset.*;
 import com.mygdx.Option.OptionGame;
 import com.mygdx.game.Level;
+import com.mygdx.game.SolutionGame;
 
 
 public class Instruction extends AbstractScreen {
@@ -17,11 +18,14 @@ public class Instruction extends AbstractScreen {
 	private Level level;
 	private int number;
 	private Image imgBHD;
-	public Instruction(Game game, String screenName, Level level, int number) {
+	private SolutionGame solutionGame;
+	public Instruction(Game game, String screenName, Level level, int number, SolutionGame solutionGame) {
 		super(game, screenName);
 		// TODO Auto-generated constructor stub
 		this.level = level;
 		this.number = number;
+		this.solutionGame = solutionGame;
+	
 		setUpScreenElements();
 		initial();
 		setUpButtons();
@@ -46,7 +50,7 @@ public class Instruction extends AbstractScreen {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				super.touchUp(event, x, y, pointer, button);
-				getGame().setScreen(new LevelScreen(getGame(), "Level Screen", level, number));
+				getGame().setScreen(new LevelScreen(getGame(), "Level Screen", level, number, solutionGame));
 //				_music.stop();
 //				OptionGame.musicbutton.setVolume(OptionGame.volume);
 //				OptionGame.musicbutton.play();
