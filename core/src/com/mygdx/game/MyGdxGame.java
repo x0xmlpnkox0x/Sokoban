@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.Asset.Assets;
+import com.mygdx.screen.LoginScreen;
 import com.mygdx.screen.screenLoading;
 
 public class MyGdxGame extends Game implements ApplicationListener {
@@ -16,6 +17,7 @@ public class MyGdxGame extends Game implements ApplicationListener {
 	public void create() {
 
 		setScreen(new screenLoading(this, "Name"));
+//		setScreen(new LoginScreen(this, "LOgin"));
 		Assets.loadAll();
 	}
 }

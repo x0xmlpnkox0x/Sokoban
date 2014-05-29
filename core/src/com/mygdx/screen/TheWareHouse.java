@@ -316,6 +316,10 @@ public class TheWareHouse extends AbstractScreen {
 					int pointer, int button) {
 				// TODO Auto-generated method stub
 				super.touchUp(event, x, y, pointer, button);
+			
+			
+			
+				
 				activeSolution = true;
 				i++;
 			}
@@ -583,10 +587,9 @@ public class TheWareHouse extends AbstractScreen {
 	public void keyBackPressed() {
 		super.keyBackPressed();
 		Gdx.app.log("ScreenLog:", "Key Back");
-		getGame()
-				.setScreen(
-						new LevelScreen(getGame(), "LEVEL SCREEN", level,
-								currentLevel, solutionGame));
+		getGame().setScreen(
+				new LevelScreen(getGame(), "LEVEL SCREEN", level, currentLevel,
+						solutionGame));
 	}
 
 	private boolean activeClicked;
