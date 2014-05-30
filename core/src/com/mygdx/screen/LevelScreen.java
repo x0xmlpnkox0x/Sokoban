@@ -22,6 +22,8 @@ public class LevelScreen extends AbstractScreen {
 
 	private Level level;
 	private int currentLevel;
+	
+	
 	private int ScreenDisplay;
 	private int ScreenDisplayNow;
 	private ArrayList tableDisplayManagerment;

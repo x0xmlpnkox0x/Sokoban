@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.mygdx.Abstract.AbstractScreen;
+import com.mygdx.Option.OptionGame;
 import com.mygdx.game.SolutionGame;
 
 

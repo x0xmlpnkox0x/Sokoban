@@ -31,7 +31,7 @@ public class SolutionGame {
 				solution[i] = lines.substring(0, y - 1);
 
 				lines = lines.substring(y + 1, lines.length());
-				Gdx.app.log("test", "" + lines);
+
 			} else if (y == -1) {
 				solution[i] = lines;
 			}

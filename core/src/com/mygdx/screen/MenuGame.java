@@ -2,6 +2,7 @@ package com.mygdx.screen;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -26,16 +27,36 @@ public class MenuGame extends AbstractScreen {
 	private ButtonGame buttonMenu; 
 	
 	public Level level;
-	private int currenLevel= 40;
+	private int currenLevel;
+	public Preferences prefs;
 	private SolutionGame solutionGame;
+	private int highScore;
 	
 	public MenuGame(Game game, String screenName, SolutionGame solutionGame) {
 		super(game, screenName);
 		this.solutionGame = solutionGame;
+		preferences();
+		currenLevel = highScore;
 		initial();
 		setUpGameElements();
 		setUpButtons();
+		
 	}
+	
+	void preferences(){
+		// Create (or retrieve existing) preferences file
+		prefs = Gdx.app.getPreferences("thien");
+
+		// Provide default high score of 0
+		if (!prefs.contains("highScore")) {
+		    prefs.putInteger("highScore", 0);
+		}
+		// Retrieves the current high score
+		
+		 highScore = prefs.getInteger("highScore");
+		
+	}
+	
 	
 	private void initial() {
 		// Create level map

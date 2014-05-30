@@ -52,4 +52,7 @@ public class OptionGame {
 	public final static int LEFT = 5;
 	public final static int TOP = 6;
 	public final static int BOTTOM = 7;
+	
+	
+	public static int levelSave=10;
 }

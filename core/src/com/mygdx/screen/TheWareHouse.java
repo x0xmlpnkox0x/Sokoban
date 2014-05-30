@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -89,6 +90,9 @@ public class TheWareHouse extends AbstractScreen {
 	private String solution = "";
 	private SolutionGame solutionGame;
 
+	private Preferences prefs;
+	private int highScore;
+	
 	public TheWareHouse(Game game, String screenName, Level level, int number,
 			SolutionGame solution_game) {
 		super(game, screenName);
@@ -97,6 +101,9 @@ public class TheWareHouse extends AbstractScreen {
 		solutionGame = solution_game;
 
 		solution = solutionGame.getSolution(number);
+		
+		prefs = Gdx.app.getPreferences("thien");
+		
 		initial();
 		setUpGameElements();
 		setUpButtons();
@@ -850,9 +857,15 @@ public class TheWareHouse extends AbstractScreen {
 			}
 
 			if (secondTime - firstTime > 1000000) {
+				highScore = prefs.getInteger("highScore");
+				if (highScore < currentLevel +1) {
+					highScore = currentLevel + 1;
+					  prefs.putInteger("highScore", highScore);
+					    prefs.flush();
+				}
 				getGame().setScreen(
 						new LevelScreen(getGame(), "MENU SCREEN", level,
-								currentLevel + 1, solutionGame));
+								highScore, solutionGame));
 			}
 		}
 	}
