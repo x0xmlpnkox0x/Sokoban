@@ -12,17 +12,17 @@ import com.mygdx.Abstract.AbstractScreen;
 import com.mygdx.Option.OptionGame;
 import com.mygdx.game.SolutionGame;
 
-
 public class screenLoading extends AbstractScreen {
 	private Image imgloading;
 
 	private long starttime;
-private SolutionGame solutionGame;
+	private SolutionGame solutionGame;
+	private String name;
 
-	public screenLoading(Game game, String screenName) {
+	public screenLoading(Game game, String screenName, String name) {
 		super(game, screenName);
 		// TODO Auto-generated constructor stub
-		
+//		this.name = name;
 		solutionGame = new SolutionGame();
 		solutionGame.setSolution();
 		starttime = TimeUtils.millis();
@@ -39,10 +39,11 @@ private SolutionGame solutionGame;
 	public void render(float delta) {
 		// TODO Auto-generated method stub
 		super.render(delta);
-		if (TimeUtils.millis()>(starttime+1000)){
-			Gdx.app.log("fdsfdsf", "FDfdsf");
-			   getGame().setScreen(new MenuGame(getGame(), "Menu Game", solutionGame));
-		   }
+		if (TimeUtils.millis() > (starttime + 1000)) {
+			
+			getGame().setScreen(
+					new MenuGame(getGame(), "Menu Game", solutionGame, name));
+		}
 	}
 
 }

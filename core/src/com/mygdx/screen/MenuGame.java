@@ -31,10 +31,11 @@ public class MenuGame extends AbstractScreen {
 	public Preferences prefs;
 	private SolutionGame solutionGame;
 	private int highScore;
-	
-	public MenuGame(Game game, String screenName, SolutionGame solutionGame) {
+	private String name="thien";
+	public MenuGame(Game game, String screenName, SolutionGame solutionGame, String name) {
 		super(game, screenName);
 		this.solutionGame = solutionGame;
+		this.name = name;
 		preferences();
 		currenLevel = highScore;
 		initial();
@@ -45,7 +46,7 @@ public class MenuGame extends AbstractScreen {
 	
 	void preferences(){
 		// Create (or retrieve existing) preferences file
-		prefs = Gdx.app.getPreferences("thien");
+		prefs = Gdx.app.getPreferences(name);
 
 		// Provide default high score of 0
 		if (!prefs.contains("highScore")) {

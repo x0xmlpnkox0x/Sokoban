@@ -33,7 +33,7 @@ public abstract class AbstractScreen implements Screen {
 		super();
 		this.game = game;
 		this.screenName = screenName;
-		stage = new Stage(new FitViewport(OptionGame.SCREEN_WIDTH, OptionGame.SCREEN_HEIGHT));
+		stage = new Stage(new FitViewport(600, 390));
 		Gdx.input.setInputProcessor(stage);
 		Gdx.app.log("ScreenLog", "SCREEN CONSTRUCT: " + screenName);
 		setUpScreenElements();

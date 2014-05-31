@@ -12,12 +12,14 @@ import com.mygdx.Asset.Assets;
 import com.mygdx.screen.screenLoading;
 
 public class MyGdxGame extends Game implements ApplicationListener {
+	private String name="thien";
+
 
 	@Override
 	public void create() {
-
-		setScreen(new screenLoading(this, "Name"));
-//		setScreen(new LoginScreen(this, "LOgin"));
+		setScreen(new screenLoading(this, "Name", name));
+		// setScreen(new LoginScreen(this, "LOgin"));
 		Assets.loadAll();
+		
 	}
 }
