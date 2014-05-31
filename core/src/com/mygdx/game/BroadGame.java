@@ -165,27 +165,27 @@ public class BroadGame {
 		return broad[x][y];
 	}
 	
-	public void moveDownUndo(Person person) {
-		int x = person.getPosX();
-		int y = person.getPosY();
-		if (OptionGame.GOAL == broad[x-1][y]) {
-			broad[x-1][y] = OptionGame.PERSON_ON_GOAL;
-			if (OptionGame.PERSON_ON_GOAL == broad[x][y]) {
-				broad[x][y] = OptionGame.GOAL;
-			} else {
-				broad[x][y] = OptionGame.FLOOR;
-			}
-		} else {
-			broad[x-1][y] = OptionGame.PERSON;
-			if (OptionGame.PERSON_ON_GOAL == broad[x][y]) {
-				broad[x][y] = OptionGame.GOAL;
-			} else {
-				broad[x][y] = OptionGame.FLOOR;
-			}
-		}
-		person.setPosX(x-1);
-		person.setPosY(y);
-	}
+//	public void moveDownUndo(Person person) {
+//		int x = person.getPosX();
+//		int y = person.getPosY();
+//		if (OptionGame.GOAL == broad[x-1][y]) {
+//			broad[x-1][y] = OptionGame.PERSON_ON_GOAL;
+//			if (OptionGame.PERSON_ON_GOAL == broad[x][y]) {
+//				broad[x][y] = OptionGame.GOAL;
+//			} else {
+//				broad[x][y] = OptionGame.FLOOR;
+//			}
+//		} else {
+//			broad[x-1][y] = OptionGame.PERSON;
+//			if (OptionGame.PERSON_ON_GOAL == broad[x][y]) {
+//				broad[x][y] = OptionGame.GOAL;
+//			} else {
+//				broad[x][y] = OptionGame.FLOOR;
+//			}
+//		}
+//		person.setPosX(x-1);
+//		person.setPosY(y);
+//	}
 	
 	public boolean checkMoveDown(Person person) {
 		int x = person.getPosX();
@@ -651,41 +651,41 @@ public class BroadGame {
 		box.setPosY(yB-1);
 	}
 	
-	public void moveLeftUndoBox(Person person, BoxGame box) {
-		int xP = person.getPosX();
-		int yP = person.getPosY();
-		int xB = box.getPosX();
-		int yB = box.getPosY();
-		if (OptionGame.GOAL == broad[xP][yP+1]) {
-			broad[xP][yP+1] = OptionGame.PLACE_BOX;
-			if (OptionGame.PERSON_ON_GOAL == broad[xP][yP]) {
-				broad[xP][yP] = OptionGame.PLACE_BOX;
-			} else {
-				broad[xP][yP] = OptionGame.BOX;
- 			}
-			if (OptionGame.PLACE_BOX == broad[xB][yB]) {
-				broad[xB][yB] = OptionGame.GOAL;
-			} else {
-				broad[xB][yB] = OptionGame.FLOOR;
-			}
-		} else {
-			broad[xP][yP+1] = OptionGame.PERSON;
-			if (OptionGame.PERSON_ON_GOAL == broad[xP][yP]) {
-				broad[xP][yP] = OptionGame.PLACE_BOX;
-			} else {
-				broad[xP][yP] = OptionGame.BOX;
- 			}
-			if (OptionGame.PLACE_BOX == broad[xB][yB]) {
-				broad[xB][yB] = OptionGame.GOAL;
-			} else {
-				broad[xB][yB] = OptionGame.FLOOR;
-			}
-		}
-		person.setPosX(xP);
-		person.setPosY(yP+1);
-		box.setPosX(xB);
-		box.setPosY(yB+1);
-	}
+//	public void moveLeftUndoBox(Person person, BoxGame box) {
+//		int xP = person.getPosX();
+//		int yP = person.getPosY();
+//		int xB = box.getPosX();
+//		int yB = box.getPosY();
+//		if (OptionGame.GOAL == broad[xP][yP+1]) {
+//			broad[xP][yP+1] = OptionGame.PLACE_BOX;
+//			if (OptionGame.PERSON_ON_GOAL == broad[xP][yP]) {
+//				broad[xP][yP] = OptionGame.PLACE_BOX;
+//			} else {
+//				broad[xP][yP] = OptionGame.BOX;
+// 			}
+//			if (OptionGame.PLACE_BOX == broad[xB][yB]) {
+//				broad[xB][yB] = OptionGame.GOAL;
+//			} else {
+//				broad[xB][yB] = OptionGame.FLOOR;
+//			}
+//		} else {
+//			broad[xP][yP+1] = OptionGame.PERSON;
+//			if (OptionGame.PERSON_ON_GOAL == broad[xP][yP]) {
+//				broad[xP][yP] = OptionGame.PLACE_BOX;
+//			} else {
+//				broad[xP][yP] = OptionGame.BOX;
+// 			}
+//			if (OptionGame.PLACE_BOX == broad[xB][yB]) {
+//				broad[xB][yB] = OptionGame.GOAL;
+//			} else {
+//				broad[xB][yB] = OptionGame.FLOOR;
+//			}
+//		}
+//		person.setPosX(xP);
+//		person.setPosY(yP+1);
+//		box.setPosX(xB);
+//		box.setPosY(yB+1);
+//	}
 	
 	public void moveWidthBoxRight(Person person, BoxGame box) {
 		int xP = person.getPosX();

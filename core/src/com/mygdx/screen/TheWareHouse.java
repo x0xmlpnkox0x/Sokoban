@@ -92,7 +92,10 @@ public class TheWareHouse extends AbstractScreen {
 
 	private Preferences prefs;
 	private int highScore;
-	
+
+	private int personResetX;
+	private int personResety;
+
 	public TheWareHouse(Game game, String screenName, Level level, int number,
 			SolutionGame solution_game) {
 		super(game, screenName);
@@ -101,9 +104,9 @@ public class TheWareHouse extends AbstractScreen {
 		solutionGame = solution_game;
 
 		solution = solutionGame.getSolution(number);
-		
+
 		prefs = Gdx.app.getPreferences("thien");
-		
+
 		initial();
 		setUpGameElements();
 		setUpButtons();
@@ -169,119 +172,119 @@ public class TheWareHouse extends AbstractScreen {
 				// }
 			}
 
-			private void moveBottomUndoBox() {
-				for (int iBox = 0; iBox < lstBox.size(); iBox++) {
-					BoxGame box = (BoxGame) lstBox.get(iBox);
-					if (box.getPosX() == person.getPosX() - 1
-							&& box.getPosY() == person.getPosY()) {
-						broad.moveTopUndoBox(person, box);
-						person.setAnimation(Assets.AnimPersonPushBottom, true,
-								true);
-						box.actionMoveTo(box.getPosY() * 40,
-								box.getPosX() * 40, 0.5f);
-						person.actionMoveTo(person.getPosY() * 40,
-								person.getPosX() * 40, 0.5f);
-
-						BottomPress = true;
-						m_runbox.play();
-						break;
-					}
-				}
-			}
-
-			private void moveBottomUndo() {
-				broad.moveTopUndo(person);
-				person.setAnimation(Assets.AnimPersonRunBottom, true, true);
-				person.actionMoveTo(person.getPosY() * 40,
-						person.getPosX() * 40, 0.5f);
-				BottomPress = true;
-				m_run.play();
-			}
-
-			private void moveTopUndoBox() {
-				for (int iBox = 0; iBox < lstBox.size(); iBox++) {
-					BoxGame box = (BoxGame) lstBox.get(iBox);
-					if (box.getPosX() == person.getPosX() + 1
-							&& box.getPosY() == person.getPosY()) {
-						broad.moveBottomUndoBox(person, box);
-						person.setAnimation(Assets.AnimPersonPushTop, true,
-								true);
-						box.actionMoveTo(box.getPosY() * 40,
-								box.getPosX() * 40, 0.5f);
-						person.actionMoveTo(person.getPosY() * 40,
-								person.getPosX() * 40, 0.5f);
-						TopPress = true;
-						m_runbox.play();
-						break;
-					}
-				}
-			}
-
-			private void moveTopUndo() {
-				broad.moveDownUndo(person);
-				person.setAnimation(Assets.AnimPersonRunTop, true, true);
-				person.actionMoveTo(person.getPosY() * 40,
-						person.getPosX() * 40, 0.5f);
-				TopPress = true;
-				m_run.play();
-			}
-
-			private void moveLeftUndoBox() {
-				for (int iBox = 0; iBox < lstBox.size(); iBox++) {
-					BoxGame box = (BoxGame) lstBox.get(iBox);
-					if (box.getPosX() == person.getPosX()
-							&& box.getPosY() == person.getPosY() - 1) {
-						broad.moveLeftUndoBox(person, box);
-						person.setAnimation(Assets.AnimPersonPushLeft, true,
-								true);
-						box.actionMoveTo(box.getPosY() * 40,
-								box.getPosX() * 40, 0.5f);
-						person.actionMoveTo(person.getPosY() * 40,
-								person.getPosX() * 40, 0.5f);
-						LeftPress = true;
-						m_runbox.play();
-						break;
-					}
-				}
-			}
-
-			private void moveLeftUndo() {
-				broad.checkMoveRight(person);
-				person.setAnimation(Assets.AnimPersonRunLeft, true, true);
-				person.actionMoveTo(person.getPosY() * 40,
-						person.getPosX() * 40, 0.5f);
-				LeftPress = true;
-				m_run.play();
-			}
-
-			private void moveRightUndoBox() {
-				for (int iBox = 0; iBox < lstBox.size(); iBox++) {
-					BoxGame box = (BoxGame) lstBox.get(iBox);
-					if (box.getPosX() == person.getPosX()
-							&& box.getPosY() == person.getPosY() + 1) {
-						broad.moveRightUndoBox(person, box);
-						person.setAnimation(Assets.AnimPersonPushRight, true,
-								true);
-						box.actionMoveTo(box.getPosY() * 40,
-								box.getPosX() * 40, 0.5f);
-						person.actionMoveTo(person.getPosY() * 40,
-								person.getPosX() * 40, 0.5f);
-						RightPress = true;
-						m_runbox.play();
-						break;
-					}
-				}
-			}
-
-			private void moveRightUndo() {
-				// TODO Auto-generated method stub
-				broad.moveRightUndo(person);
-				person.setAnimation(Assets.AnimPersonRunRight, true, true);
-				person.actionMoveTo(person.getPosY() * 40,
-						person.getPosX() * 40, 0.5f);
-				RightPress = true;
-				m_run.play();
-			}
+			// private void moveBottomUndoBox() {
+			// for (int iBox = 0; iBox < lstBox.size(); iBox++) {
+			// BoxGame box = (BoxGame) lstBox.get(iBox);
+			// if (box.getPosX() == person.getPosX() - 1
+			// && box.getPosY() == person.getPosY()) {
+			// broad.moveTopUndoBox(person, box);
+			// person.setAnimation(Assets.AnimPersonPushBottom, true,
+			// true);
+			// box.actionMoveTo(box.getPosY() * 40,
+			// box.getPosX() * 40, 0.5f);
+			// person.actionMoveTo(person.getPosY() * 40,
+			// person.getPosX() * 40, 0.5f);
+			//
+			// BottomPress = true;
+			// m_runbox.play();
+			// break;
+			// }
+			// }
+			// }
+			//
+			// private void moveBottomUndo() {
+			// broad.moveTopUndo(person);
+			// person.setAnimation(Assets.AnimPersonRunBottom, true, true);
+			// person.actionMoveTo(person.getPosY() * 40,
+			// person.getPosX() * 40, 0.5f);
+			// BottomPress = true;
+			// m_run.play();
+			// }
+			//
+			// private void moveTopUndoBox() {
+			// for (int iBox = 0; iBox < lstBox.size(); iBox++) {
+			// BoxGame box = (BoxGame) lstBox.get(iBox);
+			// if (box.getPosX() == person.getPosX() + 1
+			// && box.getPosY() == person.getPosY()) {
+			// broad.moveBottomUndoBox(person, box);
+			// person.setAnimation(Assets.AnimPersonPushTop, true,
+			// true);
+			// box.actionMoveTo(box.getPosY() * 40,
+			// box.getPosX() * 40, 0.5f);
+			// person.actionMoveTo(person.getPosY() * 40,
+			// person.getPosX() * 40, 0.5f);
+			// TopPress = true;
+			// m_runbox.play();
+			// break;
+			// }
+			// }
+			// }
+			//
+			// private void moveTopUndo() {
+			// broad.moveDownUndo(person);
+			// person.setAnimation(Assets.AnimPersonRunTop, true, true);
+			// person.actionMoveTo(person.getPosY() * 40,
+			// person.getPosX() * 40, 0.5f);
+			// TopPress = true;
+			// m_run.play();
+			// }
+			//
+			// private void moveLeftUndoBox() {
+			// for (int iBox = 0; iBox < lstBox.size(); iBox++) {
+			// BoxGame box = (BoxGame) lstBox.get(iBox);
+			// if (box.getPosX() == person.getPosX()
+			// && box.getPosY() == person.getPosY() - 1) {
+			// broad.moveLeftUndoBox(person, box);
+			// person.setAnimation(Assets.AnimPersonPushLeft, true,
+			// true);
+			// box.actionMoveTo(box.getPosY() * 40,
+			// box.getPosX() * 40, 0.5f);
+			// person.actionMoveTo(person.getPosY() * 40,
+			// person.getPosX() * 40, 0.5f);
+			// LeftPress = true;
+			// m_runbox.play();
+			// break;
+			// }
+			// }
+			// }
+			//
+			// private void moveLeftUndo() {
+			// broad.checkMoveRight(person);
+			// person.setAnimation(Assets.AnimPersonRunLeft, true, true);
+			// person.actionMoveTo(person.getPosY() * 40,
+			// person.getPosX() * 40, 0.5f);
+			// LeftPress = true;
+			// m_run.play();
+			// }
+			//
+			// private void moveRightUndoBox() {
+			// for (int iBox = 0; iBox < lstBox.size(); iBox++) {
+			// BoxGame box = (BoxGame) lstBox.get(iBox);
+			// if (box.getPosX() == person.getPosX()
+			// && box.getPosY() == person.getPosY() + 1) {
+			// broad.moveRightUndoBox(person, box);
+			// person.setAnimation(Assets.AnimPersonPushRight, true,
+			// true);
+			// box.actionMoveTo(box.getPosY() * 40,
+			// box.getPosX() * 40, 0.5f);
+			// person.actionMoveTo(person.getPosY() * 40,
+			// person.getPosX() * 40, 0.5f);
+			// RightPress = true;
+			// m_runbox.play();
+			// break;
+			// }
+			// }
+			// }
+			//
+			// private void moveRightUndo() {
+			// // TODO Auto-generated method stub
+			// broad.moveRightUndo(person);
+			// person.setAnimation(Assets.AnimPersonRunRight, true, true);
+			// person.actionMoveTo(person.getPosY() * 40,
+			// person.getPosX() * 40, 0.5f);
+			// RightPress = true;
+			// m_run.play();
+			// }
 
 		});
 		getStage().addActor(btnUndo);
@@ -305,9 +308,10 @@ public class TheWareHouse extends AbstractScreen {
 					int pointer, int button) {
 				// TODO Auto-generated method stub
 				super.touchUp(event, x, y, pointer, button);
-				getGame().setScreen(
-						new TheWareHouse(getGame(), "The WareHouse", level,
-								currentLevel, solutionGame));
+//				getGame().setScreen(
+//						new TheWareHouse(getGame(), "The WareHouse", level,
+//								currentLevel, solutionGame));
+				reset();
 			}
 		});
 
@@ -323,10 +327,7 @@ public class TheWareHouse extends AbstractScreen {
 					int pointer, int button) {
 				// TODO Auto-generated method stub
 				super.touchUp(event, x, y, pointer, button);
-			
-			
-			
-				
+				reset();
 				activeSolution = true;
 				i++;
 			}
@@ -381,6 +382,28 @@ public class TheWareHouse extends AbstractScreen {
 	private void reset() {
 		broad.setBroad(level.getMap(currentLevel),
 				level.getWidth(currentLevel), level.getHeight(currentLevel));
+		int z=0;
+		for (int i = 0; i < OptionGame.HEIGHT_BROAD; i++) {
+			for (int j = 0; j < OptionGame.WIDTH_BROAD; j++) {
+				
+				if (OptionGame.BOX == broad.checkScreen(i, j)
+						|| OptionGame.PLACE_BOX == broad.checkScreen(i, j)) {
+					BoxGame box = (BoxGame) lstBox.get(z);
+					box.setPosX(i);
+					box.setPosY(j);
+					box.setPosition(box.getPosY()*40, box.getPosX()*40);
+					
+					z++;
+				}
+				if (OptionGame.PERSON == broad.checkScreen(i, j)
+						|| OptionGame.PERSON_ON_GOAL == broad.checkScreen(i, j)) {
+					person.setPosX(i);
+					person.setPosY(j);
+					person.setPosition(j*40, i*40);
+					person.setAnimation(Assets.AnimPersonBottom, true, false);
+				}
+			}
+		}
 	}
 
 	@Override
@@ -582,6 +605,7 @@ public class TheWareHouse extends AbstractScreen {
 		for (int iGoal = 0; iGoal < lstGoal.size(); iGoal++) {
 			Goal goal = (Goal) lstGoal.get(iGoal);
 			getStage().addActor(goal);
+
 		}
 
 	}
@@ -858,10 +882,10 @@ public class TheWareHouse extends AbstractScreen {
 
 			if (secondTime - firstTime > 1000000) {
 				highScore = prefs.getInteger("highScore");
-				if (highScore < currentLevel +1) {
+				if (highScore < currentLevel + 1) {
 					highScore = currentLevel + 1;
-					  prefs.putInteger("highScore", highScore);
-					    prefs.flush();
+					prefs.putInteger("highScore", highScore);
+					prefs.flush();
 				}
 				getGame().setScreen(
 						new LevelScreen(getGame(), "MENU SCREEN", level,
