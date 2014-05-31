@@ -31,11 +31,12 @@ public class MenuGame extends AbstractScreen {
 	public Preferences prefs;
 	private SolutionGame solutionGame;
 	private int highScore;
-	private String name="thien";
+	private String name="";
 	public MenuGame(Game game, String screenName, SolutionGame solutionGame, String name) {
 		super(game, screenName);
 		this.solutionGame = solutionGame;
 		this.name = name;
+		Gdx.app.log("test", ""+name);
 		preferences();
 		currenLevel = highScore;
 		initial();

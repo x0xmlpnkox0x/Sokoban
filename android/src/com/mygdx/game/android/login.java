@@ -64,7 +64,7 @@ public class login extends Activity implements OnClickListener {
 					if (userPassword.equals(text)) {
 						Intent in = new Intent(getApplicationContext(),
 								AndroidLauncher.class);
-//						in.putExtra("UserName", userName);
+						in.putExtra("UserName", userName);
 						startActivity(in);
 					} else {
 						Toast toast2 = Toast.makeText(login.this,

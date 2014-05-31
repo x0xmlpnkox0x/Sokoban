@@ -12,8 +12,12 @@ import com.mygdx.Asset.Assets;
 import com.mygdx.screen.screenLoading;
 
 public class MyGdxGame extends Game implements ApplicationListener {
-	private String name="thien";
-
+	private String name="";
+public MyGdxGame(String name){
+	this.name = name;
+	
+	
+}
 
 	@Override
 	public void create() {

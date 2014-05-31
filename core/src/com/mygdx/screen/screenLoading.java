@@ -17,12 +17,12 @@ public class screenLoading extends AbstractScreen {
 
 	private long starttime;
 	private SolutionGame solutionGame;
-	private String name;
+	private String name="";
 
 	public screenLoading(Game game, String screenName, String name) {
 		super(game, screenName);
 		// TODO Auto-generated constructor stub
-//		this.name = name;
+		this.name = name;
 		solutionGame = new SolutionGame();
 		solutionGame.setSolution();
 		starttime = TimeUtils.millis();
